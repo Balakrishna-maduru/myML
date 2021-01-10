@@ -1,6 +1,8 @@
 import os
 
 class ReadData:
+    def __init__(self):
+        print("Data reading started")
 
     def _get_files_to_read(self, path):
         files_to_read = []
