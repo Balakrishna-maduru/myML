@@ -6,7 +6,7 @@ Created on 10-Dec-2020
 import sys
 import numpy as np
 from sklearn.impute import SimpleImputer
-from impyute.imputation.cs import fast_knn
+from sklearn.impute import KNNImputer
 from impyute.imputation.cs import mice
 
 
@@ -33,9 +33,8 @@ class DataImpute:
         return self.data
         
     def KNN(self, data, k_samples=30):
-        sys.setrecursionlimit(100000)  # Increase the recursion limit of the OS
-        # start the KNN training
-        return fast_knn(data.values, k=k_samples)
+        imputer = KNNImputer(n_neighbors=3, weights="uniform")
+        return imputer.fit_transform(data)
     
     def Multivariate(self, data):
         return mice(data.values)

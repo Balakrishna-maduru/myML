@@ -1,5 +1,5 @@
 class FeatureSelection:
-	def __init__(self, df, key):
+    def __init__(self, df, key):
         self.df = df
         self.key = key
 
