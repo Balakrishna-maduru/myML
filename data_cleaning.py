@@ -1,5 +1,6 @@
 import sys
 from pre_processing.read_data import ReadData
+from pre_processing.scaler import Scaler
 from pre_processing.data_impute import DataImpute
 from pre_processing.feature_selection import FeatureSelection
 
@@ -15,6 +16,10 @@ if __name__ == '__main__':
 
 	feature_selection = FeatureSelection(data,survey_key)
 	data = feature_selection.transform()
+
 	data_impute = DataImpute(data, survey_key)
-	data = data_impute.fill_na('knn')
+	data = data_impute.fill_na('mean')
+
+	scaler = Scaler("min_max_scaler")
+	df = scaler.scale(data)
 	print(data[1])
