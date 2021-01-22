@@ -21,5 +21,5 @@ if __name__ == '__main__':
 	data = data_impute.fill_na('mean')
 
 	scaler = Scaler("min_max_scaler")
-	df = scaler.scale(data)
-	print(data[1])
+	df = scaler.scale(data, survey_key)
+	print(df.head())
